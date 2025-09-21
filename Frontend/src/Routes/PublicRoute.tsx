@@ -9,12 +9,12 @@ interface PublicRouteProps{
 const PublicRoute:React.FC<PublicRouteProps>=({children})=>{
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const token=useSelector((state:any)=>state.jwt)
-    if(token){
-          const user: unknown = jwtDecode(token);
-          console.log(user);
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          return <Navigate to={`/${(user as any)?.role?.toLowerCase()}/dashboard`} />;
-    }
+        if(token && token.split('.').length === 3) {
+            const user: unknown = jwtDecode(token);
+            console.log(user);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            return <Navigate to={`/${(user as any)?.role?.toLowerCase()}/dashboard`} />;
+        }
     return children;
 }
 export default PublicRoute;

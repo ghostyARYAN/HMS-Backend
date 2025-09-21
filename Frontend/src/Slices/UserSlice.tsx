@@ -1,9 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { jwtDecode } from 'jwt-decode';
 
+const token = localStorage.getItem("token");
+let user = null;
+if (token && token.split('.').length === 3) {
+  user = jwtDecode(token);
+}
+
 const userSlice=createSlice({
     name: 'User',
-    initialState:localStorage.getItem('token')?jwtDecode(localStorage.getItem('token')|| '' ):{},
+    initialState: user || {},
     reducers: {
          setUser: (state, action) => {
                 localStorage.setItem('token', action.payload);
