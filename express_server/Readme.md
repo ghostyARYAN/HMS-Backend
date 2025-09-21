@@ -1,50 +1,42 @@
 # Express Server
 
-This project is an Express.js server for the HMS-Backend.
+This is the backend API for the Hospital Management System, built with Express.js and MySQL.
 
 ## Features
 
-- RESTful API endpoints
+- RESTful API endpoints for users, doctors, patients, and appointments
+- JWT-based authentication
 - Modular route handling
-- Middleware support
 
-## Requirements
-
-- Node.js (v18+ recommended)
-- npm
-
-## Getting Started
+## Setup
 
 1. **Install dependencies:**
-    ```bash
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
-2. **Start the server:**
-    ```bash
-    npm start
-    ```
+2. **Configure environment variables:**
+   - Copy `.env.example` to `.env` and fill in your database and JWT secret.
 
-3. **Development mode (with auto-reload):**
-    ```bash
-    npm run dev
-    ```
+3. **Start the server:**
+   ```sh
+   npm start
+   ```
 
 ## Project Structure
 
 ```
-express server/
-├── src/
-│   ├── routes/
-│   ├── controllers/
-│   └── app.js
+express_server/
+├── app.js
+├── db.js
+├── routes/
+│   ├── appointment.js
+│   ├── profileDoctor.js
+│   ├── profilePatient.js
+│   └── user.js
 ├── package.json
-└── Readme.md
+└── .env.example
 ```
-
-## Configuration
-
-- Environment variables can be set in a `.env` file.
 
 ## License
 
